@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Font Size Inspector",
+  "version": "1.0",
+  "description": "Displays font sizes of elements on hover when activated.",
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_title": "Inspect Font Size"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}
