@@ -1,18 +1,14 @@
-#font-size-inspector-tooltip {
+.font-size-inspector-label {
   position: absolute;
-  background: rgba(33, 33, 33, 0.95);
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  background: rgba(255, 64, 129, 0.9); /* Pinkish background */
+  color: white;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 10px;
+  line-height: 1;
+  z-index: 2147483647; /* Max z-index */
   pointer-events: none;
-  z-index: 2147483647; /* Max z-index to ensure it's on top */
-  display: none;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  line-height: 1.4;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: left;
-  max-width: 300px;
-  word-wrap: break-word;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  white-space: nowrap;
 }

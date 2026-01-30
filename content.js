@@ -1,72 +1,69 @@
-let active = false;
-let tooltip = null;
+let labels = [];
 
-function createTooltip() {
-  const div = document.createElement("div");
-  div.id = "font-size-inspector-tooltip";
-  document.body.appendChild(div);
-  return div;
+function getVisibleTextElements() {
+  const allElements = document.querySelectorAll('body *');
+  const textElements = [];
+
+  for (const el of allElements) {
+    // 1. Check if element is visible
+    if (el.offsetParent === null) continue; // Hidden element
+    
+    // 2. Check if element has direct text content (ignore empty containers)
+    let hasDirectText = false;
+    for (const node of el.childNodes) {
+      if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+        hasDirectText = true;
+        break;
+      }
+    }
+
+    if (hasDirectText) {
+      textElements.push(el);
+    }
+  }
+  return textElements;
 }
 
-function handleMouseOver(e) {
-  if (!active) return;
-  
-  const target = e.target;
-  // Don't inspect the tooltip itself
-  if (target.id === "font-size-inspector-tooltip") return;
+function showFontSizes() {
+  // Clean up any existing labels first
+  hideFontSizes();
 
-  const computedStyle = window.getComputedStyle(target);
-  const fontSize = computedStyle.fontSize;
-  const fontFamily = computedStyle.fontFamily;
-  const lineHeight = computedStyle.lineHeight;
+  const elements = getVisibleTextElements();
 
-  if (!tooltip) tooltip = createTooltip();
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const computedStyle = window.getComputedStyle(el);
+    const fontSize = computedStyle.fontSize;
 
-  tooltip.innerHTML = `
-    <div style="font-weight: bold; margin-bottom: 2px;">Font Size: ${fontSize}</div>
-    <div style="font-size: 0.9em; opacity: 0.9;">Line Height: ${lineHeight}</div>
-    <div style="font-size: 0.8em; opacity: 0.8; margin-top: 2px;">${fontFamily}</div>
-  `;
-  
-  tooltip.style.display = "block";
-  
-  // Position tooltip near cursor but prevent overflow
-  const x = e.pageX + 15;
-  const y = e.pageY + 15;
-  
-  tooltip.style.top = y + "px";
-  tooltip.style.left = x + "px";
-  
-  target.style.outline = "2px solid #ff4081";
-  target.style.cursor = "help";
+    // Don't label tiny text or icons that might register as text
+    if (rect.width === 0 || rect.height === 0) return;
+
+    const label = document.createElement('div');
+    label.className = 'font-size-inspector-label';
+    label.textContent = fontSize;
+
+    // Position the label at the top-left of the element
+    // We use window.scrollY/X to account for scrolling
+    label.style.top = (rect.top + window.scrollY) + 'px';
+    label.style.left = (rect.left + window.scrollX) + 'px';
+
+    document.body.appendChild(label);
+    labels.push(label);
+  });
 }
 
-function handleMouseOut(e) {
-  if (!active) return;
-  if (tooltip) tooltip.style.display = "none";
-  e.target.style.outline = "";
-  e.target.style.cursor = "";
+function hideFontSizes() {
+  labels.forEach(label => label.remove());
+  labels = [];
 }
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === "toggle") {
-    active = !active;
-    if (active) {
-      document.addEventListener("mouseover", handleMouseOver);
-      document.addEventListener("mouseout", handleMouseOut);
-      // Create tooltip immediately so it's ready
-      if (!tooltip) tooltip = createTooltip();
-      console.log("Font Inspector: ON");
-    } else {
-      document.removeEventListener("mouseover", handleMouseOver);
-      document.removeEventListener("mouseout", handleMouseOut);
-      if (tooltip) tooltip.style.display = "none";
-      // Clear any outlines
-      document.querySelectorAll('*').forEach(el => {
-          el.style.outline = '';
-          if (el.style.cursor === "help") el.style.cursor = "";
-      });
-      console.log("Font Inspector: OFF");
-    }
+  if (request.action === "toggleOn") {
+    showFontSizes();
+    // Re-run on resize to keep positions correct
+    window.addEventListener('resize', showFontSizes);
+  } else if (request.action === "toggleOff") {
+    hideFontSizes();
+    window.removeEventListener('resize', showFontSizes);
   }
 });
