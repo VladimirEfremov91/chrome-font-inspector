@@ -11,93 +11,63 @@
 <a name="english"></a>
 ## 🇺🇸 English
 
-**Font Size Inspector** is a lightweight Google Chrome extension that helps developers and designers quickly check typography details on any webpage.
+**Font Size Inspector** is a powerful yet simple Google Chrome extension that provides an instant overview of all font sizes on a webpage. 
 
-Simply click the extension icon to activate it, then hover over any text to inspect its properties.
+Instead of inspecting elements one by one, this extension overlays font-size labels on every visible text element with a single click.
 
 ### ✨ Features
 
-*   **Instant Inspection:** Hover over any element to see its font details immediately.
-*   **Key Metrics:** Displays `Font Size`, `Line Height`, and `Font Family`.
-*   **Visual Feedback:** Highlights the inspected element with a clear outline.
-*   **Toggleable:** Easily switch inspection mode on/off with a single click.
-*   **Minimalist:** Non-intrusive tooltip that doesn't get in your way.
+*   **Batch Inspection:** Instantly see font sizes for *all* text elements on the page simultaneously.
+*   **Status Indication:** Shows a pink **"ON"** badge on the extension icon when active.
+*   **Auto-Positioning:** Labels are accurately placed over text and stay in position even when you resize the window.
+*   **Toggleable:** Easily switch the labels on and off with one click.
+*   **Clean Design:** High-contrast labels (pink background) for maximum readability.
 
 ### 🚀 Installation
 
-Since this extension is not yet published on the Chrome Web Store, you can install it manually in Developer Mode:
-
-1.  **Clone or Download** this repository to your local machine.
+1.  **Clone or Download** this repository.
     ```bash
     git clone https://github.com/VladimirEfremov91/chrome-font-inspector.git
     ```
-2.  Open Google Chrome and navigate to `chrome://extensions`.
-3.  Enable **Developer mode** by toggling the switch in the top right corner.
-4.  Click the **Load unpacked** button.
-5.  Select the folder where you cloned/downloaded this repository (the folder containing `manifest.json`).
-6.  The extension should now appear in your browser toolbar!
+2.  Open Chrome and go to `chrome://extensions`.
+3.  Enable **Developer mode**.
+4.  Click **Load unpacked** and select the project folder.
 
 ### 📖 Usage
 
-1.  Click the **Font Size Inspector** icon in your Chrome toolbar (it may be inside the "puzzle piece" menu).
-2.  **Hover** over any text element on the page.
-3.  A tooltip will appear showing the typography details.
-4.  Click the extension icon again to **disable** the inspector.
-
-### 🛠 Tech Stack
-
-*   **JavaScript** (Vanilla)
-*   **CSS**
-*   **Manifest V3**
-
-### 📄 License
-
-This project is open source. Feel free to use, modify, and distribute it.
+1.  Click the **Font Size Inspector** icon in your Chrome toolbar.
+2.  The icon will show an **"ON"** badge, and font-size labels will appear across the entire page.
+3.  Click the icon again to hide the labels and return the page to its original state.
 
 ---
 
 <a name="russian"></a>
 ## 🇷🇺 Русский
 
-**Font Size Inspector** — это легкое расширение для Google Chrome, которое помогает разработчикам и дизайнерам быстро проверять параметры типографики на любой веб-странице.
+**Font Size Inspector** — это мощное и простое расширение для Google Chrome, которое мгновенно показывает размеры всех шрифтов на веб-странице.
 
-Просто нажмите на значок расширения, чтобы активировать его, а затем наведите курсор на любой текст, чтобы проверить его свойства.
+Вместо того чтобы проверять каждый элемент по отдельности, это расширение одним кликом накладывает ярлыки с размерами шрифтов на все видимые текстовые элементы.
 
 ### ✨ Возможности
 
-*   **Мгновенная инспекция:** Наведите курсор на любой элемент, чтобы сразу увидеть детали шрифта.
-*   **Ключевые метрики:** Отображает `Размер шрифта` (Font Size), `Высоту строки` (Line Height) и `Семейство шрифтов` (Font Family).
-*   **Визуальная обратная связь:** Подсвечивает инспектируемый элемент четким цветным контуром.
-*   **Переключаемость:** Легко включайте и выключайте режим инспекции одним кликом.
-*   **Минимализм:** Ненавязчивая всплывающая подсказка, которая не мешает просмотру контента.
+*   **Массовая инспекция:** Мгновенно просматривайте размеры шрифтов для *всех* текстовых элементов на странице одновременно.
+*   **Индикация статуса:** На иконке расширения появляется розовый значок **"ON"**, когда оно активно.
+*   **Авто-позиционирование:** Ярлыки точно размещаются над текстом и сохраняют свои позиции даже при изменении размера окна.
+*   **Переключаемость:** Легко включайте и выключайте отображение ярлыков одним кликом.
+*   **Яркий дизайн:** Высококонтрастные ярлыки (розовый фон) для максимальной читаемости.
 
 ### 🚀 Установка
 
-Поскольку расширение еще не опубликовано в Chrome Web Store, вы можете установить его вручную в режиме разработчика:
-
-1.  **Клонируйте или скачайте** этот репозиторий на свой компьютер.
+1.  **Клонируйте или скачайте** этот репозиторий.
     ```bash
     git clone https://github.com/VladimirEfremov91/chrome-font-inspector.git
     ```
-2.  Откройте Google Chrome и перейдите по адресу `chrome://extensions`.
-3.  Включите **Режим разработчика** (переключатель в правом верхнем углу).
-4.  Нажмите кнопку **Загрузить распакованное расширение** (Load unpacked).
-5.  Выберите папку, в которую вы клонировали/скачали этот репозиторий (папку, содержащую файл `manifest.json`).
-6.  Расширение должно появиться на панели инструментов вашего браузера!
+2.  Откройте Chrome и перейдите по адресу `chrome://extensions`.
+3.  Включите **Режим разработчика**.
+4.  Нажмите **Загрузить распакованное расширение** и выберите папку проекта.
 
 ### 📖 Как использовать
 
-1.  Нажмите значок **Font Size Inspector** на панели инструментов Chrome (он может находиться внутри меню "пазл").
-2.  **Наведите курсор** на любой текстовый элемент на странице.
-3.  Появится всплывающая подсказка с деталями типографики.
-4.  Снова нажмите значок расширения, чтобы **отключить** инспектор.
-
-### 🛠 Технологии
-
-*   **JavaScript** (Vanilla)
-*   **CSS**
-*   **Manifest V3**
-
-### 📄 Лицензия
-
-Этот проект с открытым исходным кодом. Вы можете свободно использовать, изменять и распространять его.
+1.  Нажмите значок **Font Size Inspector** на панели инструментов Chrome.
+2.  На иконке появится значок **"ON"**, а по всей странице отобразятся ярлыки с размерами шрифтов.
+3.  Нажмите на значок еще раз, чтобы скрыть ярлыки и вернуть страницу в исходное состояние.
